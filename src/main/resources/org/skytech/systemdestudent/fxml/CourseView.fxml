@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.geometry.Insets?>
+        <?import javafx.scene.control.*?>
+        <?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.skytech.systemdestudent.controller.CourseController">
+
+<padding>
+    <Insets top="10" right="10" bottom="10" left="10"/>
+</padding>
+
+<!-- Left - Input Form -->
+<left>
+    <VBox spacing="10" prefWidth="350">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+
+        <Label text="Course Information" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <Separator/>
+
+        <!-- Course Code -->
+        <Label text="Course Code:"/>
+        <TextField fx:id="courseCodeField" promptText="e.g., CS101"/>
+
+        <!-- Course Title -->
+        <Label text="Course Title:"/>
+        <TextField fx:id="courseTitleField" promptText="Enter course title"/>
+
+        <!-- Credits -->
+        <Label text="Credits:"/>
+        <TextField fx:id="creditsField" promptText="1-10"/>
+
+        <!-- Department -->
+        <Label text="Department:"/>
+        <TextField fx:id="departmentField" promptText="e.g., Computer Science"/>
+
+        <!-- Instructor -->
+        <Label text="Instructor:"/>
+        <TextField fx:id="instructorField" promptText="Instructor name"/>
+
+        <!-- Prerequisites -->
+        <Label text="Prerequisites:"/>
+        <TextField fx:id="prerequisitesField" promptText="e.g., CS100, MATH101"/>
+
+        <!-- Course Description -->
+        <Label text="Course Description:"/>
+        <TextArea fx:id="descriptionArea" promptText="Enter course description"
+                  prefRowCount="4" wrapText="true"/>
+
+        <!-- Buttons -->
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="addButton" text="Add" onAction="#handleAddCourse"
+                    prefWidth="80" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+            <Button fx:id="updateButton" text="Update" onAction="#handleUpdateCourse"
+                    prefWidth="80" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+            <Button fx:id="deleteButton" text="Delete" onAction="#handleDeleteCourse"
+                    prefWidth="80" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+        </HBox>
+
+        <Button fx:id="clearButton" text="Clear Fields" onAction="#handleClearFields"
+                prefWidth="Infinity"/>
+    </VBox>
+</left>
+
+<!-- Center - Table View -->
+<center>
+    <VBox spacing="10">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+
+        <Label text="Course Catalog" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+        <TableView fx:id="courseTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="codeColumn" text="Course Code" prefWidth="100"/>
+                <TableColumn fx:id="titleColumn" text="Course Title" prefWidth="250"/>
+                <TableColumn fx:id="creditsColumn" text="Credits" prefWidth="80"/>
+                <TableColumn fx:id="departmentColumn" text="Department" prefWidth="150"/>
+                <TableColumn fx:id="instructorColumn" text="Instructor" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </VBox>
+</center>
+
+</BorderPane>

@@ -1,0 +1,310 @@
+/* Student Records Management System - Stylesheet */
+/* Modern, professional styling for JavaFX application */
+
+/* Root styling */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: normal;
+}
+
+/* Text Fields */
+.text-field, .text-area {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6px;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2px;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #34495e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #2c3e50;
+}
+
+.button:pressed {
+    -fx-background-color: #1a252f;
+}
+
+/* Table View */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #34495e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #ecf0f1;
+}
+
+.table-row-cell:selected:hover {
+    -fx-background-color: #2980b9;
+}
+
+.table-cell {
+    -fx-padding: 8px;
+}
+
+/* Tab Pane */
+.tab-pane {
+    -fx-background-color: #ecf0f1;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #bdc3c7;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-padding: 10px 20px;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: white;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #3498db;
+}
+
+/* Menu Bar */
+.menu-bar {
+    -fx-background-color: #2c3e50;
+}
+
+.menu-bar .label {
+    -fx-text-fill: white;
+}
+
+.menu-bar .menu:hover {
+    -fx-background-color: #34495e;
+}
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+}
+
+.menu-item:hover {
+    -fx-background-color: #3498db;
+}
+
+.menu-item:hover .label {
+    -fx-text-fill: white;
+}
+
+/* Date Picker */
+.date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.date-picker:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2px;
+}
+
+.date-picker-popup {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+}
+
+/* Combo Box */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.combo-box:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2px;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: white;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #ecf0f1;
+}
+
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+/* Scroll Bar */
+.scroll-bar {
+    -fx-background-color: #ecf0f1;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #95a5a6;
+    -fx-background-radius: 5px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #7f8c8d;
+}
+
+/* Separator */
+.separator {
+    -fx-background-color: #bdc3c7;
+}
+
+/* Alert Dialog */
+.alert {
+    -fx-background-color: white;
+}
+
+.alert .header-panel {
+    -fx-background-color: #3498db;
+}
+
+.alert .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    -fx-progress-color: #3498db;
+}
+
+/* Tooltip */
+.tooltip {
+    -fx-background-color: #2c3e50;
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-font-size: 12px;
+}
+
+/* Custom Button Styles */
+.add-button {
+    -fx-background-color: #27ae60;
+}
+
+.add-button:hover {
+    -fx-background-color: #229954;
+}
+
+.update-button {
+    -fx-background-color: #3498db;
+}
+
+.update-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.delete-button {
+    -fx-background-color: #e74c3c;
+}
+
+.delete-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+.clear-button {
+    -fx-background-color: #95a5a6;
+}
+
+.clear-button:hover {
+    -fx-background-color: #7f8c8d;
+}
+
+/* Title Labels */
+.title-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Status Bar */
+.status-bar {
+    -fx-background-color: #ecf0f1;
+    -fx-padding: 5px 10px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1px 0 0 0;
+}
+
+/* Form Containers */
+.form-container {
+    -fx-background-color: white;
+    -fx-padding: 15px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+/* Error State */
+.text-field-error {
+    -fx-border-color: #e74c3c;
+    -fx-border-width: 2px;
+}
+
+/* Success State */
+.text-field-success {
+    -fx-border-color: #27ae60;
+    -fx-border-width: 2px;
+}
+
+/* Header Section */
+.header-section {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 15px;
+}
+
+.header-section .label {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}

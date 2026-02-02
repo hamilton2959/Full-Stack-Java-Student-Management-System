@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.geometry.Insets?>
+        <?import javafx.scene.control.*?>
+        <?import javafx.scene.layout.*?>
+        <?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.skytech.systemdestudent.controller.MainController">
+
+<!-- Top Menu Bar -->
+<top>
+    <VBox>
+        <MenuBar>
+            <Menu text="File">
+                <MenuItem text="Exit" onAction="#handleExit"/>
+            </Menu>
+            <Menu text="Help">
+                <MenuItem text="About" onAction="#handleAbout"/>
+            </Menu>
+        </MenuBar>
+
+        <HBox alignment="CENTER" style="-fx-background-color: #2c3e50; -fx-padding: 15;">
+            <Label text="Student Records Management System"
+                   textFill="white" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </HBox>
+    </VBox>
+</top>
+
+<!-- Center - Tab Pane -->
+<center>
+    <TabPane fx:id="mainTabPane" tabClosingPolicy="UNAVAILABLE">
+
+        <!-- Students Tab -->
+        <Tab text="Students">
+            <fx:include source="StudentView.fxml"/>
+        </Tab>
+
+        <!-- Courses Tab -->
+        <Tab text="Courses">
+            <fx:include source="CourseView.fxml"/>
+        </Tab>
+
+        <!-- Enrollments Tab -->
+        <Tab text="Enrollments">
+            <fx:include source="EnrollmentView.fxml"/>
+        </Tab>
+
+        <!-- Reports Tab -->
+        <Tab text="Reports">
+            <fx:include source="ReportView.fxml"/>
+        </Tab>
+
+    </TabPane>
+</center>
+
+<!-- Bottom Status Bar -->
+<bottom>
+    <HBox alignment="CENTER_LEFT" spacing="10"
+          style="-fx-background-color: #ecf0f1; -fx-padding: 5;">
+        <Label fx:id="statusLabel" text="Ready" style="-fx-font-size: 12px;"/>
+        <Separator orientation="VERTICAL"/>
+        <Label fx:id="recordCountLabel" text="Records: 0" style="-fx-font-size: 12px;"/>
+    </HBox>
+</bottom>
+
+</BorderPane>

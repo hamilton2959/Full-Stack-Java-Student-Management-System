@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.geometry.Insets?>
+        <?import javafx.scene.control.*?>
+        <?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.skytech.systemdestudent.controller.StudentController">
+
+<padding>
+    <Insets top="10" right="10" bottom="10" left="10"/>
+</padding>
+
+<!-- Left - Input Form -->
+<left>
+    <VBox spacing="10" prefWidth="350">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+
+        <Label text="Student Information" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <Separator/>
+
+        <!-- Registration Number -->
+        <Label text="Registration Number:"/>
+        <TextField fx:id="regNoField" promptText="e.g., S2024001"/>
+
+        <!-- First Name -->
+        <Label text="First Name:"/>
+        <TextField fx:id="firstNameField" promptText="Enter first name"/>
+
+        <!-- Last Name -->
+        <Label text="Last Name:"/>
+        <TextField fx:id="lastNameField" promptText="Enter last name"/>
+
+        <!-- Enrollment Date -->
+        <Label text="Enrollment Date:"/>
+        <DatePicker fx:id="enrollmentDatePicker" prefWidth="Infinity"/>
+
+        <!-- Email -->
+        <Label text="Email:"/>
+        <TextField fx:id="emailField" promptText="student@example.com"/>
+
+        <!-- Date of Birth -->
+        <Label text="Date of Birth:"/>
+        <DatePicker fx:id="dobPicker" prefWidth="Infinity"/>
+
+        <!-- Department -->
+        <Label text="Department:"/>
+        <TextField fx:id="departmentField" promptText="e.g., Computer Science"/>
+
+        <!-- Phone Number -->
+        <Label text="Phone Number:"/>
+        <TextField fx:id="phoneField" promptText="e.g., +254700000000"/>
+
+        <!-- Address -->
+        <Label text="Address:"/>
+        <TextArea fx:id="addressArea" promptText="Enter address" prefRowCount="3"/>
+
+        <!-- Buttons -->
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="addButton" text="Add" onAction="#handleAddStudent"
+                    prefWidth="80" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+            <Button fx:id="updateButton" text="Update" onAction="#handleUpdateStudent"
+                    prefWidth="80" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+            <Button fx:id="deleteButton" text="Delete" onAction="#handleDeleteStudent"
+                    prefWidth="80" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+        </HBox>
+
+        <Button fx:id="clearButton" text="Clear Fields" onAction="#handleClearFields"
+                prefWidth="Infinity"/>
+    </VBox>
+</left>
+
+<!-- Center - Table View -->
+<center>
+    <VBox spacing="10">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+
+        <Label text="Student Records" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+        <TableView fx:id="studentTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="regNoColumn" text="Reg No" prefWidth="100"/>
+                <TableColumn fx:id="firstNameColumn" text="First Name" prefWidth="120"/>
+                <TableColumn fx:id="lastNameColumn" text="Last Name" prefWidth="120"/>
+                <TableColumn fx:id="enrollmentDateColumn" text="Enrollment Date" prefWidth="120"/>
+                <TableColumn fx:id="emailColumn" text="Email" prefWidth="150"/>
+                <TableColumn fx:id="departmentColumn" text="Department" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </VBox>
+</center>
+
+</BorderPane>
