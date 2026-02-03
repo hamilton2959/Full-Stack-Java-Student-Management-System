@@ -17,5 +17,6 @@ module org.skytech.systemdestudent {
     requires spring.boot;
 
     opens org.skytech.systemdestudent to javafx.fxml;
+    opens org.skytech.systemdestudent.config to spring.core, spring.beans, spring.context;
     exports org.skytech.systemdestudent;
 }

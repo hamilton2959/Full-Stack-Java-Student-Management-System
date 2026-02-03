@@ -5,7 +5,8 @@ import org.springframework.stereotype.Component;
 import java.sql.*;
 
 @Component
-@Configuration
+//@Configuration
+@Configuration(proxyBeanMethods = false)
 public class DatabaseConfig {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/";
