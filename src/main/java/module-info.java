@@ -18,5 +18,10 @@ module org.skytech.systemdestudent {
 
     opens org.skytech.systemdestudent to javafx.fxml;
     opens org.skytech.systemdestudent.config to spring.core, spring.beans, spring.context;
+    // Allow Spring reflection (CRITICAL)
+    opens org.skytech.systemdestudent.controller to spring.core, spring.beans, spring.context;
+    opens org.skytech.systemdestudent.service to spring.core, spring.beans, spring.context;
+    opens org.skytech.systemdestudent.repository to spring.core, spring.beans, spring.context;
+
     exports org.skytech.systemdestudent;
 }

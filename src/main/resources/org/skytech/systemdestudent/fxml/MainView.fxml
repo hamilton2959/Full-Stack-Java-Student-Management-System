@@ -5,7 +5,8 @@
         <?import javafx.scene.layout.*?>
         <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
+<BorderPane prefHeight="600.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.skytech.systemdestudent.controller.MainController">
 

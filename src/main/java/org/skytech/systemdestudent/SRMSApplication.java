@@ -28,24 +28,35 @@ public class SRMSApplication extends Application {
 
     @Override
     public void init() throws Exception {
-        // Initialize Spring context
-        springContext = SpringApplication.run(SRMSApplication.class);
+        try {
+            // Initialize Spring context
+            springContext = SpringApplication.run(SRMSApplication.class);
 
-        // Load FXML with Spring context
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
-        fxmlLoader.setControllerFactory(springContext::getBean);
-        root = fxmlLoader.load();
+            // Load FXML with Spring context
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
+            //FXMLLoader fxmlLoader = new FXMLLoader(SRMSApplication.class.getResource("/fxml/MainView.fxml"));
+            fxmlLoader.setControllerFactory(springContext::getBean);
+            root = fxmlLoader.load();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Student Records Management System");
+        try {
+            primaryStage.setTitle("Student Records Management System");
 
-        Scene scene = new Scene(root, 1200, 700);
-        scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
+            Scene scene = new Scene(root, 1200, 700);
+            scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     @Override

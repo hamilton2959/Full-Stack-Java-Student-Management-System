@@ -1,91 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-        <?import javafx.geometry.Insets?>
-        <?import javafx.scene.control.*?>
-        <?import javafx.scene.layout.*?>
+    <?import javafx.geometry.Insets?>
+    <?import javafx.scene.control.*?>
+    <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.skytech.systemdestudent.controller.CourseController">
+    <VBox prefHeight="500.0" prefWidth="1000.0" spacing="10"
+          xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="org.skytech.systemdestudent.controller.CourseController">
 
-<padding>
-    <Insets top="10" right="10" bottom="10" left="10"/>
-</padding>
-
-<!-- Left - Input Form -->
-<left>
-    <VBox spacing="10" prefWidth="350">
         <padding>
             <Insets top="10" right="10" bottom="10" left="10"/>
         </padding>
 
-        <Label text="Course Information" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-        <Separator/>
+        <!-- Top - Input Form -->
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #bdc3c7; -fx-border-radius: 5;">
+            <Label text="Course Information" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Separator/>
 
-        <!-- Course Code -->
-        <Label text="Course Code:"/>
-        <TextField fx:id="courseCodeField" promptText="e.g., CS101"/>
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                </columnConstraints>
 
-        <!-- Course Title -->
-        <Label text="Course Title:"/>
-        <TextField fx:id="courseTitleField" promptText="Enter course title"/>
+                <!-- Row 1 -->
+                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Course Code:"/>
+                    <TextField fx:id="courseCodeField" promptText="e.g., CS101"/>
+                </VBox>
 
-        <!-- Credits -->
-        <Label text="Credits:"/>
-        <TextField fx:id="creditsField" promptText="1-10"/>
+                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="2">
+                    <Label text="Course Title:"/>
+                    <TextField fx:id="courseTitleField" promptText="Enter course title"/>
+                </VBox>
 
-        <!-- Department -->
-        <Label text="Department:"/>
-        <TextField fx:id="departmentField" promptText="e.g., Computer Science"/>
+                <VBox spacing="5" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                    <Label text="Credits:"/>
+                    <TextField fx:id="creditsField" promptText="1-10"/>
+                </VBox>
 
-        <!-- Instructor -->
-        <Label text="Instructor:"/>
-        <TextField fx:id="instructorField" promptText="Instructor name"/>
+                <!-- Row 2 -->
+                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Department:"/>
+                    <TextField fx:id="departmentField" promptText="e.g., Computer Science"/>
+                </VBox>
 
-        <!-- Prerequisites -->
-        <Label text="Prerequisites:"/>
-        <TextField fx:id="prerequisitesField" promptText="e.g., CS100, MATH101"/>
+                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Instructor:"/>
+                    <TextField fx:id="instructorField" promptText="Instructor name"/>
+                </VBox>
 
-        <!-- Course Description -->
-        <Label text="Course Description:"/>
-        <TextArea fx:id="descriptionArea" promptText="Enter course description"
-                  prefRowCount="4" wrapText="true"/>
+                <VBox spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.columnSpan="2">
+                    <Label text="Prerequisites:"/>
+                    <TextField fx:id="prerequisitesField" promptText="e.g., CS100, MATH101"/>
+                </VBox>
 
-        <!-- Buttons -->
-        <HBox spacing="10" alignment="CENTER">
-            <Button fx:id="addButton" text="Add" onAction="#handleAddCourse"
-                    prefWidth="80" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
-            <Button fx:id="updateButton" text="Update" onAction="#handleUpdateCourse"
-                    prefWidth="80" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
-            <Button fx:id="deleteButton" text="Delete" onAction="#handleDeleteCourse"
-                    prefWidth="80" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
-        </HBox>
+                <!-- Row 3 -->
+                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="4">
+                    <Label text="Course Description:"/>
+                    <TextArea fx:id="descriptionArea" promptText="Enter course description"
+                              prefRowCount="3" wrapText="true"/>
+                </VBox>
+            </GridPane>
 
-        <Button fx:id="clearButton" text="Clear Fields" onAction="#handleClearFields"
-                prefWidth="Infinity"/>
+            <!-- Buttons -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="addButton" text="Add Course" onAction="#handleAddCourse"
+                        prefWidth="120" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+                <Button fx:id="updateButton" text="Update Course" onAction="#handleUpdateCourse"
+                        prefWidth="120" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                <Button fx:id="deleteButton" text="Delete Course" onAction="#handleDeleteCourse"
+                        prefWidth="120" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+                <Button fx:id="clearButton" text="Clear Fields" onAction="#handleClearFields"
+                        prefWidth="120" style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+
+        <!-- Bottom - Table View -->
+        <VBox spacing="10" VBox.vgrow="ALWAYS">
+            <Label text="Course Catalog" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+            <TableView fx:id="courseTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="codeColumn" text="Course Code" prefWidth="120"/>
+                    <TableColumn fx:id="titleColumn" text="Course Title" prefWidth="300"/>
+                    <TableColumn fx:id="creditsColumn" text="Credits" prefWidth="80"/>
+                    <TableColumn fx:id="departmentColumn" text="Department" prefWidth="180"/>
+                    <TableColumn fx:id="instructorColumn" text="Instructor" prefWidth="200"/>
+                </columns>
+            </TableView>
+        </VBox>
+
     </VBox>
-</left>
-
-<!-- Center - Table View -->
-<center>
-    <VBox spacing="10">
-        <padding>
-            <Insets top="10" right="10" bottom="10" left="10"/>
-        </padding>
-
-        <Label text="Course Catalog" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-
-        <TableView fx:id="courseTable" VBox.vgrow="ALWAYS">
-            <columns>
-                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
-                <TableColumn fx:id="codeColumn" text="Course Code" prefWidth="100"/>
-                <TableColumn fx:id="titleColumn" text="Course Title" prefWidth="250"/>
-                <TableColumn fx:id="creditsColumn" text="Credits" prefWidth="80"/>
-                <TableColumn fx:id="departmentColumn" text="Department" prefWidth="150"/>
-                <TableColumn fx:id="instructorColumn" text="Instructor" prefWidth="150"/>
-            </columns>
-        </TableView>
-    </VBox>
-</center>
-
-</BorderPane>

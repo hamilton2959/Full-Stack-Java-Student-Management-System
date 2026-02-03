@@ -1,182 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-        <?import javafx.geometry.Insets?>
-        <?import javafx.scene.control.*?>
-        <?import javafx.scene.layout.*?>
+    <?import javafx.geometry.Insets?>
+    <?import javafx.scene.control.*?>
+    <?import javafx.scene.layout.*?>
 
-<?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.skytech.systemdestudent.controller.ReportController">
+<?import javafx.collections.FXCollections?>
+<VBox prefHeight="500.0" prefWidth="1000.0" spacing="10"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.skytech.systemdestudent.controller.ReportController">
 
-<padding>
-    <Insets top="10" right="10" bottom="10" left="10"/>
-</padding>
-
-<!-- Left - Report Options -->
-<left>
-    <VBox spacing="15" prefWidth="300">
         <padding>
             <Insets top="10" right="10" bottom="10" left="10"/>
         </padding>
 
-        <Label text="Report Generation" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-        <Separator/>
+        <!-- Top - Report Options -->
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #bdc3c7; -fx-border-radius: 5;">
+            <Label text="Report Generation" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Separator/>
 
-        <!-- Student Transcript Section -->
-        <VBox spacing="8" style="-fx-background-color: #ecf0f1; -fx-padding: 10; -fx-background-radius: 5;">
-            <Label text="Student Transcript" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            <GridPane hgap="15" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="33"/>
+                    <ColumnConstraints percentWidth="33"/>
+                    <ColumnConstraints percentWidth="34"/>
+                </columnConstraints>
 
-            <Label text="Select Student:"/>
-            <ComboBox fx:id="transcriptStudentComboBox" promptText="Choose student" prefWidth="Infinity"/>
+                <!-- Student Transcript Section -->
+                <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                      style="-fx-background-color: #e8f5e9; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;">
+                    <Label text="📄 Student Transcript" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                    <Separator/>
+                    <Label text="Select Student:"/>
+                    <ComboBox fx:id="transcriptStudentComboBox" promptText="Choose student" prefWidth="Infinity"/>
+                    <Button text="Generate Transcript" onAction="#handleGenerateTranscript"
+                            prefWidth="Infinity"
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                </VBox>
 
-            <Button text="Generate Transcript" onAction="#handleGenerateTranscript"
-                    prefWidth="Infinity"
-                    style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
-        </VBox>
+                <!-- Course Roster Section -->
+                <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                      style="-fx-background-color: #fff3e0; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;">
+                    <Label text="📋 Course Roster" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                    <Separator/>
+                    <Label text="Select Course:"/>
+                    <ComboBox fx:id="rosterCourseComboBox" promptText="Choose course" prefWidth="Infinity"/>
+                    <Button text="Generate Course Roster" onAction="#handleGenerateCourseRoster"
+                            prefWidth="Infinity"
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                </VBox>
 
-        <Separator/>
-
-        <!-- Course Roster Section -->
-        <VBox spacing="8" style="-fx-background-color: #ecf0f1; -fx-padding: 10; -fx-background-radius: 5;">
-            <Label text="Course Roster" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
-
-            <Label text="Select Course:"/>
-            <ComboBox fx:id="rosterCourseComboBox" promptText="Choose course" prefWidth="Infinity"/>
-
-            <Button text="Generate Course Roster" onAction="#handleGenerateCourseRoster"
-                    prefWidth="Infinity"
-                    style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
-        </VBox>
-
-        <Separator/>
-
-        <!-- Enrollment Summary Section -->
-        <VBox spacing="8" style="-fx-background-color: #ecf0f1; -fx-padding: 10; -fx-background-radius: 5;">
-            <Label text="Enrollment Summary" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
-
-            <Label text="Semester:"/>
-            <ComboBox fx:id="semesterComboBox" promptText="Select semester" prefWidth="Infinity">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="All"/>
-                        <String fx:value="Fall"/>
-                        <String fx:value="Spring"/>
-                        <String fx:value="Summer"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
-
-            <Label text="Academic Year:"/>
-            <TextField fx:id="academicYearField" promptText="e.g., 2024/2025"/>
-
-            <Button text="Generate Summary" onAction="#handleGenerateSummary"
-                    prefWidth="Infinity"
-                    style="-fx-background-color: #9b59b6; -fx-text-fill: white;"/>
-        </VBox>
-
-        <Separator/>
-
-        <!-- Statistics Section -->
-        <VBox spacing="8" style="-fx-background-color: #ecf0f1; -fx-padding: 10; -fx-background-radius: 5;">
-            <Label text="Quick Statistics" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
-
-            <GridPane hgap="10" vgap="5">
-                <Label text="Total Students:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                <Label fx:id="totalStudentsLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="0"
-                       style="-fx-font-weight: bold;"/>
-
-                <Label text="Total Courses:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                <Label fx:id="totalCoursesLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1"
-                       style="-fx-font-weight: bold;"/>
-
-                <Label text="Total Enrollments:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                <Label fx:id="totalEnrollmentsLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2"
-                       style="-fx-font-weight: bold;"/>
+                <!-- Enrollment Summary Section -->
+                <VBox spacing="8" GridPane.columnIndex="2" GridPane.rowIndex="0"
+                      style="-fx-background-color: #f3e5f5; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;">
+                    <Label text="📊 Enrollment Summary" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                    <Separator/>
+                    <Label text="Semester:"/>
+                    <ComboBox fx:id="semesterComboBox" promptText="Select semester" prefWidth="Infinity">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="All"/>
+                                <String fx:value="Fall"/>
+                                <String fx:value="Spring"/>
+                                <String fx:value="Summer"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <Label text="Academic Year:"/>
+                    <TextField fx:id="academicYearField" promptText="e.g., 2024/2025"/>
+                    <Button text="Generate Summary" onAction="#handleGenerateSummary"
+                            prefWidth="Infinity"
+                            style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                </VBox>
             </GridPane>
 
-            <Button text="Refresh Statistics" onAction="#handleRefreshStatistics"
-                    prefWidth="Infinity"/>
+            <Separator/>
+
+            <!-- Statistics Section -->
+            <HBox spacing="30" alignment="CENTER" style="-fx-background-color: #ecf0f1; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="Total Students" style="-fx-font-size: 12px;"/>
+                    <Label fx:id="totalStudentsLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                </VBox>
+                <Separator orientation="VERTICAL"/>
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="Total Courses" style="-fx-font-size: 12px;"/>
+                    <Label fx:id="totalCoursesLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                </VBox>
+                <Separator orientation="VERTICAL"/>
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="Total Enrollments" style="-fx-font-size: 12px;"/>
+                    <Label fx:id="totalEnrollmentsLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #9b59b6;"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="🔄 Refresh Statistics" onAction="#handleRefreshStatistics"
+                        style="-fx-background-color: #34495e; -fx-text-fill: white;"/>
+            </HBox>
         </VBox>
 
-        <Separator/>
+        <!-- Bottom - Report Display Area -->
+        <VBox spacing="10" VBox.vgrow="ALWAYS">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label fx:id="reportTitleLabel" text="Report Display Area"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Print" onAction="#handlePrint" disable="true"
+                        style="-fx-background-color: #7f8c8d; -fx-text-fill: white;"/>
+                <Button text="Clear" onAction="#handleClearReport"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+            </HBox>
 
-        <!-- Export Options -->
-        <VBox spacing="8">
-            <Label text="Export Options" style="-fx-font-weight: bold;"/>
-            <Button text="Export to PDF" onAction="#handleExportPDF" prefWidth="Infinity" disable="true"/>
-            <Button text="Export to Excel" onAction="#handleExportExcel" prefWidth="Infinity" disable="true"/>
-            <Label text="(Export features coming soon)" style="-fx-font-size: 10px; -fx-text-fill: gray;"/>
+            <!-- Report Content Area -->
+            <TabPane fx:id="reportTabPane" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+
+                <!-- Transcript Tab -->
+                <Tab text="📄 Transcript">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <Label fx:id="transcriptHeaderLabel" text="Student Transcript"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+                        <TextArea fx:id="transcriptTextArea" editable="false" wrapText="true"
+                                  VBox.vgrow="ALWAYS" style="-fx-font-family: 'Courier New'; -fx-font-size: 12px;"/>
+                    </VBox>
+                </Tab>
+
+                <!-- Course Roster Tab -->
+                <Tab text="📋 Course Roster">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label fx:id="rosterHeaderLabel" text="Course Roster"
+                                   style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="rosterCountLabel" text="Total Students: 0"
+                                   style="-fx-font-weight: bold;"/>
+                        </HBox>
+
+                        <TableView fx:id="rosterTableView" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="rosterRegNoColumn" text="Reg No" prefWidth="100"/>
+                                <TableColumn fx:id="rosterStudentNameColumn" text="Student Name" prefWidth="200"/>
+                                <TableColumn fx:id="rosterEnrollmentDateColumn" text="Enrollment Date" prefWidth="120"/>
+                                <TableColumn fx:id="rosterGradeColumn" text="Grade" prefWidth="80"/>
+                                <TableColumn fx:id="rosterSemesterColumn" text="Semester" prefWidth="100"/>
+                                <TableColumn fx:id="rosterYearColumn" text="Academic Year" prefWidth="120"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+
+                <!-- Summary Tab -->
+                <Tab text="📊 Summary">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <Label text="Enrollment Summary"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+                        <TextArea fx:id="summaryTextArea" editable="false" wrapText="true"
+                                  VBox.vgrow="ALWAYS" style="-fx-font-family: 'Courier New'; -fx-font-size: 12px;"/>
+                    </VBox>
+                </Tab>
+
+            </TabPane>
         </VBox>
+
     </VBox>
-</left>
-
-<!-- Center - Report Display Area -->
-<center>
-    <VBox spacing="10">
-        <padding>
-            <Insets top="10" right="10" bottom="10" left="10"/>
-        </padding>
-
-        <HBox spacing="10" alignment="CENTER_LEFT">
-            <Label fx:id="reportTitleLabel" text="Report Display Area"
-                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-            <Region HBox.hgrow="ALWAYS"/>
-            <Button text="Print" onAction="#handlePrint" disable="true"/>
-            <Button text="Clear" onAction="#handleClearReport"/>
-        </HBox>
-
-        <Separator/>
-
-        <!-- Report Content Area -->
-        <TabPane fx:id="reportTabPane" VBox.vgrow="ALWAYS">
-
-            <!-- Transcript Tab -->
-            <Tab text="Transcript" closable="false">
-                <VBox spacing="10" style="-fx-padding: 10;">
-                    <Label fx:id="transcriptHeaderLabel" text="Student Transcript"
-                           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
-
-                    <TextArea fx:id="transcriptTextArea" editable="false" wrapText="true"
-                              VBox.vgrow="ALWAYS" style="-fx-font-family: 'Courier New';"/>
-                </VBox>
-            </Tab>
-
-            <!-- Course Roster Tab -->
-            <Tab text="Course Roster" closable="false">
-                <VBox spacing="10" style="-fx-padding: 10;">
-                    <Label fx:id="rosterHeaderLabel" text="Course Roster"
-                           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
-
-                    <TableView fx:id="rosterTableView" VBox.vgrow="ALWAYS">
-                        <columns>
-                            <TableColumn fx:id="rosterRegNoColumn" text="Reg No" prefWidth="100"/>
-                            <TableColumn fx:id="rosterStudentNameColumn" text="Student Name" prefWidth="200"/>
-                            <TableColumn fx:id="rosterEnrollmentDateColumn" text="Enrollment Date" prefWidth="120"/>
-                            <TableColumn fx:id="rosterGradeColumn" text="Grade" prefWidth="80"/>
-                            <TableColumn fx:id="rosterSemesterColumn" text="Semester" prefWidth="100"/>
-                            <TableColumn fx:id="rosterYearColumn" text="Academic Year" prefWidth="120"/>
-                        </columns>
-                    </TableView>
-
-                    <Label fx:id="rosterCountLabel" text="Total Students: 0"/>
-                </VBox>
-            </Tab>
-
-            <!-- Summary Tab -->
-            <Tab text="Summary" closable="false">
-                <VBox spacing="10" style="-fx-padding: 10;">
-                    <Label text="Enrollment Summary"
-                           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
-
-                    <TextArea fx:id="summaryTextArea" editable="false" wrapText="true"
-                              VBox.vgrow="ALWAYS" style="-fx-font-family: 'Courier New';"/>
-                </VBox>
-            </Tab>
-
-        </TabPane>
-    </VBox>
-</center>
-
-</BorderPane>

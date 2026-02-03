@@ -1,134 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-        <?import javafx.geometry.Insets?>
-        <?import javafx.scene.control.*?>
-        <?import javafx.scene.layout.*?>
+    <?import javafx.geometry.Insets?>
+    <?import javafx.scene.control.*?>
+    <?import javafx.scene.layout.*?>
 
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.skytech.systemdestudent.controller.EnrollmentController">
+<VBox prefHeight="500.0" prefWidth="1000.0" spacing="10"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.skytech.systemdestudent.controller.EnrollmentController">
 
-<padding>
-    <Insets top="10" right="10" bottom="10" left="10"/>
-</padding>
-
-<!-- Left - Input Form -->
-<left>
-    <VBox spacing="10" prefWidth="350">
         <padding>
             <Insets top="10" right="10" bottom="10" left="10"/>
         </padding>
 
-        <Label text="Enrollment Information" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-        <Separator/>
+        <!-- Top - Input Form -->
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #bdc3c7; -fx-border-radius: 5;">
+            <Label text="Enrollment Information" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Separator/>
 
-        <!-- Student Selection -->
-        <Label text="Student:"/>
-        <ComboBox fx:id="studentComboBox" promptText="Select student" prefWidth="Infinity"/>
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                    <ColumnConstraints percentWidth="25"/>
+                </columnConstraints>
 
-        <!-- Course Selection -->
-        <Label text="Course:"/>
-        <ComboBox fx:id="courseComboBox" promptText="Select course" prefWidth="Infinity"/>
+                <!-- Row 1 -->
+                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2">
+                    <Label text="Student:"/>
+                    <ComboBox fx:id="studentComboBox" promptText="Select student" prefWidth="Infinity"/>
+                </VBox>
 
-        <!-- Enrollment Date -->
-        <Label text="Enrollment Date:"/>
-        <DatePicker fx:id="enrollmentDatePicker" prefWidth="Infinity"/>
+                <VBox spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="2">
+                    <Label text="Course:"/>
+                    <ComboBox fx:id="courseComboBox" promptText="Select course" prefWidth="Infinity"/>
+                </VBox>
 
-        <!-- Semester -->
-        <Label text="Semester:"/>
-        <ComboBox fx:id="semesterComboBox" promptText="Select semester" prefWidth="Infinity">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Fall"/>
-                    <String fx:value="Spring"/>
-                    <String fx:value="Summer"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
+                <!-- Row 2 -->
+                <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Enrollment Date:"/>
+                    <DatePicker fx:id="enrollmentDatePicker" prefWidth="Infinity"/>
+                </VBox>
 
-        <!-- Academic Year -->
-        <Label text="Academic Year:"/>
-        <TextField fx:id="academicYearField" promptText="e.g., 2024/2025"/>
+                <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Semester:"/>
+                    <ComboBox fx:id="semesterComboBox" promptText="Select semester" prefWidth="Infinity">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Fall"/>
+                                <String fx:value="Spring"/>
+                                <String fx:value="Summer"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
 
-        <!-- Grade -->
-        <Label text="Grade (Optional):"/>
-        <ComboBox fx:id="gradeComboBox" promptText="Select grade" prefWidth="Infinity">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value=""/>
-                    <String fx:value="A"/>
-                    <String fx:value="A-"/>
-                    <String fx:value="B+"/>
-                    <String fx:value="B"/>
-                    <String fx:value="B-"/>
-                    <String fx:value="C+"/>
-                    <String fx:value="C"/>
-                    <String fx:value="C-"/>
-                    <String fx:value="D+"/>
-                    <String fx:value="D"/>
-                    <String fx:value="D-"/>
-                    <String fx:value="E"/>
-                    <String fx:value="F"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
+                <VBox spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <Label text="Academic Year:"/>
+                    <TextField fx:id="academicYearField" promptText="e.g., 2024/2025"/>
+                </VBox>
 
-        <Separator/>
+                <VBox spacing="5" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                    <Label text="Grade (Optional):"/>
+                    <ComboBox fx:id="gradeComboBox" promptText="Select grade" prefWidth="Infinity">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value=""/>
+                                <String fx:value="A"/>
+                                <String fx:value="A-"/>
+                                <String fx:value="B+"/>
+                                <String fx:value="B"/>
+                                <String fx:value="B-"/>
+                                <String fx:value="C+"/>
+                                <String fx:value="C"/>
+                                <String fx:value="C-"/>
+                                <String fx:value="D+"/>
+                                <String fx:value="D"/>
+                                <String fx:value="D-"/>
+                                <String fx:value="E"/>
+                                <String fx:value="F"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
+            </GridPane>
 
-        <!-- Buttons -->
-        <HBox spacing="10" alignment="CENTER">
-            <Button fx:id="enrollButton" text="Enroll" onAction="#handleEnroll"
-                    prefWidth="100" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
-            <Button fx:id="updateGradeButton" text="Update Grade" onAction="#handleUpdateGrade"
-                    prefWidth="100" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
-        </HBox>
+            <!-- Buttons -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="enrollButton" text="Enroll Student" onAction="#handleEnroll"
+                        prefWidth="130" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+                <Button fx:id="updateGradeButton" text="Update Grade" onAction="#handleUpdateGrade"
+                        prefWidth="130" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                <Button fx:id="deleteButton" text="Delete Enrollment" onAction="#handleDeleteEnrollment"
+                        prefWidth="130" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+                <Button fx:id="clearButton" text="Clear" onAction="#handleClearFields"
+                        prefWidth="100" style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+            </HBox>
 
-        <HBox spacing="10" alignment="CENTER">
-            <Button fx:id="deleteButton" text="Delete" onAction="#handleDeleteEnrollment"
-                    prefWidth="100" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
-            <Button fx:id="clearButton" text="Clear" onAction="#handleClearFields"
-                    prefWidth="100"/>
-        </HBox>
+            <Separator/>
 
-        <Separator/>
+            <!-- Filter Options -->
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Filter:" style="-fx-font-weight: bold;"/>
+                <Button text="Show All" onAction="#handleShowAll" prefWidth="120"/>
+                <Button text="By Student" onAction="#handleFilterByStudent" prefWidth="120"/>
+                <Button text="By Course" onAction="#handleFilterByCourse" prefWidth="120"/>
+            </HBox>
+        </VBox>
 
-        <!-- Filter Section -->
-        <Label text="Filter Enrollments:" style="-fx-font-weight: bold;"/>
-        <Button text="Show All Enrollments" onAction="#handleShowAll" prefWidth="Infinity"/>
-        <Button text="Filter by Selected Student" onAction="#handleFilterByStudent" prefWidth="Infinity"/>
-        <Button text="Filter by Selected Course" onAction="#handleFilterByCourse" prefWidth="Infinity"/>
+        <!-- Bottom - Table View -->
+        <VBox spacing="10" VBox.vgrow="ALWAYS">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Enrollment Records" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="enrollmentCountLabel" text="Total Enrollments: 0" style="-fx-font-weight: bold;"/>
+            </HBox>
+
+            <TableView fx:id="enrollmentTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="studentRegNoColumn" text="Reg No" prefWidth="100"/>
+                    <TableColumn fx:id="studentNameColumn" text="Student Name" prefWidth="180"/>
+                    <TableColumn fx:id="courseCodeColumn" text="Course Code" prefWidth="100"/>
+                    <TableColumn fx:id="courseTitleColumn" text="Course Title" prefWidth="220"/>
+                    <TableColumn fx:id="enrollmentDateColumn" text="Enrollment Date" prefWidth="120"/>
+                    <TableColumn fx:id="semesterColumn" text="Semester" prefWidth="100"/>
+                    <TableColumn fx:id="academicYearColumn" text="Academic Year" prefWidth="120"/>
+                    <TableColumn fx:id="gradeColumn" text="Grade" prefWidth="80"/>
+                </columns>
+            </TableView>
+        </VBox>
+
     </VBox>
-</left>
-
-<!-- Center - Table View -->
-<center>
-    <VBox spacing="10">
-        <padding>
-            <Insets top="10" right="10" bottom="10" left="10"/>
-        </padding>
-
-        <Label text="Enrollment Records" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-
-        <TableView fx:id="enrollmentTable" VBox.vgrow="ALWAYS">
-            <columns>
-                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
-                <TableColumn fx:id="studentRegNoColumn" text="Reg No" prefWidth="100"/>
-                <TableColumn fx:id="studentNameColumn" text="Student Name" prefWidth="150"/>
-                <TableColumn fx:id="courseCodeColumn" text="Course Code" prefWidth="100"/>
-                <TableColumn fx:id="courseTitleColumn" text="Course Title" prefWidth="200"/>
-                <TableColumn fx:id="enrollmentDateColumn" text="Enrollment Date" prefWidth="120"/>
-                <TableColumn fx:id="semesterColumn" text="Semester" prefWidth="100"/>
-                <TableColumn fx:id="academicYearColumn" text="Academic Year" prefWidth="120"/>
-                <TableColumn fx:id="gradeColumn" text="Grade" prefWidth="80"/>
-            </columns>
-        </TableView>
-
-        <HBox spacing="10" alignment="CENTER_RIGHT">
-            <Label fx:id="enrollmentCountLabel" text="Total Enrollments: 0"/>
-        </HBox>
-    </VBox>
-</center>
-
-</BorderPane>
